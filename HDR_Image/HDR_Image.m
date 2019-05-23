@@ -11,6 +11,18 @@ function result = HDR_Image(img_src, Lmax, threshold_val, kernal_size, sigma, be
     % 提取亮度通道
      subplot(2, 2, 2);
     v_channel = origin_hsv(:, :, 3);
+    
+    %%-----添加预处理去噪----------------
+    tmp = v_channel;
+    [m, n] = size(v_channel);
+    for i = 1 : m - 3 + 1
+        for j = 1 : n - 3 + 1
+            list = v_channel(i : (i + 3 - 1), j : (j + 3 - 1));
+            list = list(:);
+            tmp(i + (3 - 1)/2, j + (3 - 1)/2) = median(list);
+        end
+    end
+    v_channel = tmp;
     imhist(v_channel);
     title('origin histogram');
     % 逆色调映射
