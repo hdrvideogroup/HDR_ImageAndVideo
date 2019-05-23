@@ -1,0 +1,15 @@
+function result = merge(inverse_v, high_region, v_channel, sigma, belta, gamma, delta)
+    Imin = min(min(v_channel));
+    result = inverse_v;
+    [m,n] = size(v_channel);
+    for i = 1: n
+        for j = 1 : m
+            if inverse_v(i, j) < belta * Imin
+                result(i, j) = sigma * inverse_v(i, j);
+            else
+                result(i, j) = gamma * inverse_v(i, j) + delta * high_region(i, j);
+            end
+        end
+    end
+    imtool(result);
+end
