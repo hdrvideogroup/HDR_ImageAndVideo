@@ -227,7 +227,7 @@ $$
 
 ### 实验结果
 
-![1560059713672](C:\Users\chensh236\AppData\Roaming\Typora\typora-user-images\1560059713672.png)
+![1560059713672](img2.png)
 
 可以看出，通过单张图像的HDR图像生成，可以获得比较高的亮度范围以及对比度范围。
 
